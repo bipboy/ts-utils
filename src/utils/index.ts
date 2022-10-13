@@ -11,3 +11,6 @@ export {default as urlRedirect} from './urlRedirect';
 
 export * from './hub';
 export * from './string-utils';
+export * from './convert';
+export * from './hexToRgb';
+export * from './imageRoot';
