@@ -1,6 +1,6 @@
 {
   "name": "@bipboys/ts-utils",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple typescript functions",
   "author": "Bipboys Dev Team",
   "sideEffects": false,
@@ -17,10 +17,15 @@
   ],
   "scripts": {
     "build": "npm run build:clean && npm run build-esm && npm run build-node && npm run build:types",
-    "build:clean": "rimraf ./build && mkdir build",
     "build-esm": "swc ./src -d build/esm -C module.type=es6",
     "build-node": "swc ./src -d build/node -C module.type=commonjs",
+    "build:clean": "rimraf ./build && mkdir build",
     "build:types": "tsc -p tsconfig.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
     "clean": "rimraf ./node_modules && npm run build:clean"
   },
   "dependencies": {
@@ -29,10 +34,31 @@
   "devDependencies": {
     "@bipboys/typescript-preset": "0.0.1",
     "@swc/cli": "^0.1.62",
-    "@swc/core": "^1.3.38",
-    "@types/node": "^18.14.6",
+    "@swc/core": "^1.3.41",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.5",
+    "jest": "29.5.0",
     "process": "0.11.10",
-    "rimraf": "^4.3.1",
+    "rimraf": "^4.4.0",
+    "ts-jest": "29.0.5",
+    "ts-node": "^10.9.1",
     "typescript": "4.9.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }

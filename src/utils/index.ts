@@ -14,3 +14,4 @@ export * from './string-utils';
 export * from './convert';
 export * from './hexToRgb';
 export * from './imageRoot';
+export * from './ipToInt';

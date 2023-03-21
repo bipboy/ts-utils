@@ -11,18 +11,8 @@
     "declarationDir": "types",
     "emitDeclarationOnly": true,
     "noEmit": false,
-    "types": [
-      "node"
-    ]
+    "types": ["node", "jest"]
   },
   "extends": "@bipboys/typescript-preset/tsconfig.base.json",
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "index.ts"
-  ],
-  "exclude": [
-    "**/*.test.ts",
-    "**/*.test.tsx"
-  ]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "index.ts"]
 }
